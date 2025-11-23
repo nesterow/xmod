@@ -1,6 +1,6 @@
 export class SortedAddon<T extends (...args: any) => any = any> {
   #map = new Map<number, Set<T>>();
-  get size() {
+  get size(): number {
     return this.#map.size;
   }
   use(ref: T, index: number = 0) {

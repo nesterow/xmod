@@ -6,7 +6,7 @@ export * from "./store/mod.ts";
 export * from "./utils/LocalStorageAdapter.ts";
 export * from "./utils/NoopStorageAdapter.ts";
 
-import type { StoreModule, XModule } from "./types.ts";
+import type { StoreModule, XModule, Store } from "./types.ts";
 import type { StorageAdapter } from "./utils/LocalStorageAdapter.ts";
 import { createContainer } from "./factory.ts";
 import { createStore } from "./store/factory.ts";
@@ -17,7 +17,11 @@ export type CreateTableModuleOpts = {
   storage?: StorageAdapter;
 };
 
-export function createApp({ id, modules, storage }: CreateTableModuleOpts) {
+export function createApp({
+  id,
+  modules,
+  storage,
+}: CreateTableModuleOpts): Store {
   const storeModules: StoreModule[] = modules
     .map((p) => p.store)
     .filter((p) => !!p);

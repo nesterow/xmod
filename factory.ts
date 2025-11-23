@@ -2,10 +2,12 @@ import type { Slots, XModule } from "./types.ts";
 import type { Store } from "./store/mod.ts";
 import { ADDONS_CONTAINER_ACCESSOR } from "./utils/private.ts";
 
-export const createPlugin = (plugin: XModule) => plugin;
-export type Container = ReturnType<typeof createContainer>;
+export interface Container extends Slots {}
 
-export const createContainer = (store: Store, modules: XModule[]) => {
+export const createContainer = (
+  store: Store,
+  modules: XModule[],
+): Container => {
   const sortedPlugins = [...modules].sort((a, b) => {
     if (a.dependencies?.includes(b.name)) {
       return 1;
