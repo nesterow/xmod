@@ -40,7 +40,10 @@ export const createContainer = (
   }, 0);
 
   const hooks = modules.reduce(
-    (acc, val) => ({ ...acc, ...(val.hooks?.(sorted) ?? {}) }),
+    (acc, val) => ({
+      ...acc,
+      ...(val.hooks?.({ modules: sorted, store }) ?? {}),
+    }),
     {},
   ) as Record<string, any>;
 
