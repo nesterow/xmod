@@ -16,7 +16,7 @@ export type ModuleHooksCallback = (
   modules: XModule[],
 ) => Record<string, (...args: any[]) => any>;
 
-export type XModule<T extends Record<string, any> = Record<string, any>> = {
+export interface XModule<T extends Record<string, any> = Record<string, any>> {
   name: string;
   dependencies?: string[];
   tableProps?: T;
@@ -26,4 +26,4 @@ export type XModule<T extends Record<string, any> = Record<string, any>> = {
   store?: StoreModule;
   slots?: () => Partial<Slots>;
   hooks?: ModuleHooksCallback;
-};
+}
