@@ -11,17 +11,13 @@ import type { StorageAdapter } from "./utils/LocalStorageAdapter.ts";
 import { createContainer } from "./factory.ts";
 import { createStore } from "./store/factory.ts";
 
-export type CreateTableModuleOpts = {
+export type CreateAppOpts = {
   id: string;
   modules: XModule[];
   storage?: StorageAdapter;
 };
 
-export function createApp({
-  id,
-  modules,
-  storage,
-}: CreateTableModuleOpts): Store {
+export function createApp({ id, modules, storage }: CreateAppOpts): Store {
   const storeModules: StoreModule[] = modules
     .map((p) => p.store)
     .filter((p) => !!p);
