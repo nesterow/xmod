@@ -2,6 +2,7 @@
   "name": "@nesterow/xmod",
   "nodeModulesDir": "auto",
   "version": "0.1.0",
+  "license": "MIT",
   "tasks": {
     "text": "deno test"
   },
