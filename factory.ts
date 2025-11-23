@@ -8,7 +8,7 @@ export const createContainer = (
   store: Store,
   modules: XModule[],
 ): Container => {
-  const sortedPlugins = [...modules].sort((a, b) => {
+  const sorted = [...modules].sort((a, b) => {
     if (a.dependencies?.includes(b.name)) {
       return 1;
     }
@@ -26,13 +26,13 @@ export const createContainer = (
   modules.forEach((mod) => mod.beforeInit?.(slots));
 
   setTimeout(async () => {
-    for (const plugin of sortedPlugins) {
+    for (const plugin of sorted) {
       plugin.onInit?.({
         store,
       });
     }
     await new Promise((r) => setTimeout(r, 1));
-    for (const plugin of sortedPlugins) {
+    for (const plugin of sorted) {
       plugin.afterInit?.({
         store,
       });
@@ -40,7 +40,7 @@ export const createContainer = (
   }, 0);
 
   const hooks = modules.reduce(
-    (acc, val) => ({ ...acc, ...(val.hooks ?? {}) }),
+    (acc, val) => ({ ...acc, ...(val.hooks?.(sorted) ?? {}) }),
     {},
   ) as Record<string, any>;
 
