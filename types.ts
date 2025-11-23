@@ -12,9 +12,10 @@ export interface ModuleInitOptions {
 export interface Slots extends Record<string, any> {}
 export type BeforeInitCallback = (opts: Slots) => void;
 export type ModuleInitCallback = (opts: ModuleInitOptions) => void;
-export type ModuleHooksCallback = (
-  modules: XModule[],
-) => Record<string, (...args: any[]) => any>;
+export type ModuleHooksCallback = (opts: {
+  modules: XModule[];
+  store: Store;
+}) => Record<string, (...args: any[]) => any>;
 
 export interface XModule<T extends Record<string, any> = Record<string, any>> {
   name: string;
