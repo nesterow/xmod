@@ -57,12 +57,6 @@ const counterModule: XModule = {
 const loggerModule: XModule = {
   name: "logger",
   dependencies: ["counter"],
-  onInit: ({ store }) => {
-    // Log changes to the counter
-    effect(() => {
-      console.log("Count is now:", store.state.count.value);
-    });
-  },
 };
 ```
 
