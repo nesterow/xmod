@@ -1,6 +1,7 @@
 {
   "name": "@nesterow/xmod",
   "nodeModulesDir": "auto",
+  "version": "0.1.0",
   "tasks": {
     "text": "deno test"
   },
