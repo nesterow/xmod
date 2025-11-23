@@ -1,4 +1,4 @@
-import { StorageAdapter } from "../components/LocalStorageAdapter.ts";
+import type { StorageAdapter } from "./LocalStorageAdapter.ts";
 
 export class NoopStorageAdapter implements StorageAdapter {
   getItem<T>(_: string): T | null {
