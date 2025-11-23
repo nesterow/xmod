@@ -20,11 +20,10 @@ export type ModuleHooksCallback = (opts: {
 export interface XModule<T extends Record<string, any> = Record<string, any>> {
   name: string;
   dependencies?: string[];
-  tableProps?: T;
-  beforeInit?: BeforeInitCallback;
-  onInit?: ModuleInitCallback;
-  afterInit?: ModuleInitCallback;
   store?: StoreModule;
   slots?: () => Partial<Slots>;
   hooks?: ModuleHooksCallback;
+  beforeInit?: BeforeInitCallback;
+  onInit?: ModuleInitCallback;
+  afterInit?: ModuleInitCallback;
 }
